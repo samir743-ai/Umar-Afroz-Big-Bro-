@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celebrating 6 Years of Umar Afroz! 👑</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #050408;
+            color: #ffffff;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 3D Deep Space Canvas Background */
+        #deep-space-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Main Wrapper */
+        .wrapper {
+            position: relative;
+            z-index: 2;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        /* Glitch Title Effect */
+        .glitch-title {
+            font-size: 4.2rem;
+            font-weight: 900;
+            color: #fff;
+            position: relative;
+            margin-bottom: 5px;
+            letter-spacing: 4px;
+            animation: glitch 1.5s infinite;
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px #ff007f, -2px -2px #00dfd8; }
+            20% { text-shadow: -2px 2px #ff007f, 2px -2px #00dfd8; }
+            40% { text-shadow: 2px -2px #ff007f, -2px 2px #00dfd8; }
+            60% { text-shadow: -2px -2px #ff007f, 2px 2px #00dfd8; }
+            80% { text-shadow: 2px 2px #ff007f, -2px -2px #00dfd8; }
+            100% { text-shadow: -2px 2px #ff007f, 2px -2px #00dfd8; }
+        }
+
+        .highlight-subtitle {
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, #ffca28, #ffeb3b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 60px;
+            font-weight: 700;
+        }
+
+        /* 3D Glassmorphism Message Box */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 30px;
+            padding: 50px;
+            margin-bottom: 70px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.7);
+            transition: all 0.5s ease;
+        }
+
+        .glass-panel:hover {
+            transform: scale(1.02);
+            border-color: rgba(255, 202, 40, 0.3);
+        }
+
+        .message-content {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: #f1f5f9;
+            text-align: justify;
+        }
+
+        .message-content strong {
+            color: #ff007f;
+            font-weight: 800;
+        }
+
+        /* New Horizontal Timeline */
+        .section-heading {
+            font-size: 2.5rem;
+            color: #00dfd8;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-heading::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            bottom: -8px;
+            left: 25%;
+            background: #ffca28;
+            border-radius: 2px;
+        }
+
+        .timeline-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 30px;
+            padding: 20px 0;
+            margin-bottom: 50px;
+            scrollbar-width: thin;
+            scrollbar-color: #ff007f #050408;
+        }
+
+        .timeline-scroll::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .timeline-scroll::-webkit-scrollbar-thumb {
+            background-color: #ff007f;
+            border-radius: 10px;
+        }
+
+        .tm-card {
+            flex: 0 0 320px;
+            height: 480px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .tm-card:hover {
+            transform: rotateY(180deg);
+        }
+
+        /* Card Front */
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .card-front {
+            background-size: cover;
+            background-position: center;
+        }
+
+        .front-title {
+            background: rgba(0,0,0,0.8);
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* Card Back */
+        .card-back {
+            background: rgba(20, 15, 30, 0.95);
+            transform: rotateY(180deg);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .back-msg {
+            font-size: 1.1rem;
+            color: #ffca28;
+            line-height: 1.6;
+        }
+
+        /* Floating Celebration Icons */
+        .floating-icon {
+            position: fixed;
+            top: -10vh;
+            z-index: 3;
+            font-size: 2.5rem;
+            user-select: none;
+            pointer-events: none;
+            animation: fallRotate linear infinite;
+        }
+
+        @keyframes fallRotate {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(115vh) rotate(720deg);
+                opacity: 0.2;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="deep-space-canvas"></canvas>
+
+    <div class="wrapper">
+        <h1 class="glitch-title">UMAR AFROZ</h1>
+        <p class="highlight-subtitle">🎉 6 Years of Creators Journey, Complete! 👑</p>
+
+        <div class="glass-panel">
+            <p class="message-content">
+                <strong>Dearest Bhai, Umar Afroz,</strong><br><br>
+                For 6 incredible years, you have shared your vision, knowledge, and passion with the world. Completing this milestone is not just a success; it is a true testament to your unwavering dedication, immense hard work, and remarkable talent.<br><br>
+                From your very first upload to the latest masterpiece, you have grown, evolved, and inspired countless minds. Your consistency, late-night edits, and obsession with quality are proof that you belong at the top. This is more than a channel; it's a legacy you are building.<br><br>
+                As you complete 6 legendary years, know that we are incredibly proud of you! Here’s to millions of more subscribers, massive global success, and endless inspiration ahead. Keep shining, Bhai! 💐👑🚀🥁🎺
+            </p>
+        </div>
+
+        <h2 class="section-heading">Timeline of Evolution</h2>
+
+        <div class="timeline-scroll">
+            <!-- 2018 Start -->
+            <div class="tm-card">
+                <div class="card-front" style="background-image: url('1000015230.jpg');">
+                    <p class="front-title">The First Spark 📝</p>
+                </div>
+                <div class="card-back">
+                    <p class="back-msg">2018 - Writing concepts on the whiteboard. Pure dedication from Day 1.</p>
+                </div>
+            </div>
+
+            <!-- 2019 Milestone -->
+            <div class="tm-card">
+                <div class="card-front" style="background-image: url('1000015224.jpg');">
+                    <p class="front-title">Humble Beginnings 🎤</p>
+                </div>
+                <div class="card-back">
+                    <p class="back-msg">2019 - Consistency and learning. Building the foundation of content creation.</p>
+                </div>
+            </div>
+
+            <!-- 2021 Growth -->
+            <div class="tm-card">
+                <div class="card-front" style="background-image: url('1000015226.jpg');">
+                    <p class="front-title">Focus & Passion 💻</p>
+                </div>
+                <div class="card-back">
+                    <p class="back-msg">2021 - Refining techniques, growing the audience, and creating impactful content.</p>
+                </div>
+            </div>
+
+            <!-- 2023 Setup -->
+            <div class="tm-card">
+                <div class="card-front" style="background-image: url('1000015225.jpg');">
+                    <p class="front-title">Creator Studio 🎙️</p>
+                </div>
+                <div class="card-back">
+                    <p class="back-msg">2023 - Professional setup and expanding the brand to new heights.</p>
+                </div>
+            </div>
+
+            <!-- 2024 Present -->
+            <div class="tm-card">
+                <div class="card-front" style="background-image: url('1000015227.jpg');">
+                    <p class="front-title">Deep Work Legacy 🏆</p>
+                </div>
+                <div class="card-back">
+                    <p class="back-msg">2024 - A true Master of content creation. 6 years complete and unstoppable!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. Particle Deep Space Background
+        const canvas = document.getElementById('deep-space-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, stars = [];
+
+        function resizeCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Star {
+            constructor() {
+                this.init();
+            }
+            init() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.z = Math.random() * width;
+                this.color = `hsl(${Math.random() * 360}, 100%, 75%)`;
+            }
+            move() {
+                this.z -= 1.5;
+                if (this.z <= 0) this.init();
+            }
+            draw() {
+                const spx = (this.x - width / 2) * (500 / this.z) + width / 2;
+                const spy = (this.y - height / 2) * (500 / this.z) + height / 2;
+                const radius = Math.random() * 2 * (500 / this.z);
+                
+                if (spx >= 0 && spx <= width && spy >= 0 && spy <= height) {
+                    ctx.beginPath();
+                    ctx.arc(spx, spy, radius, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                }
+            }
+        }
+
+        for (let i = 0; i < 400; i++) stars.push(new Star());
+
+        function loop() {
+            ctx.fillStyle = 'rgba(5, 4, 8, 0.4)';
+            ctx.fillRect(0, 0, width, height);
+            stars.forEach(s => { s.move(); s.draw(); });
+            requestAnimationFrame(loop);
+        }
+        loop();
+
+        // 2. Celebration Emoji Rain
+        const icons = ['🎉', '🎊', '👑', '🌙', '💐', '🥁', '🎺', '🎷', '🪗', '🏅', '🥯', '🍩', '🎂', '🍰', '🍫'];
+
+        function spawnIcon() {
+            const el = document.createElement('div');
+            el.classList.add('floating-icon');
+            el.innerText = icons[Math.floor(Math.random() * icons.length)];
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            el.style.fontSize = (Math.random() * 1 + 2) + 'rem';
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 8000);
+        }
+        setInterval(spawnIcon, 250);
+    </script>
+</body>
+</html>
